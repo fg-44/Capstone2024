@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PathNatureEcommerceCapstone.Models.DatabaseCapstone.Categories>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
+<div class="row d-flex flex-sm-column align-content-lg-center justify-content-center">
+    <div class="col-lg-12 col-md-6 col-sm-6">
+
+        <div class="col-12">
+            <h1 class=" display-4 mt-4">
+                Categories Index
+            </h1>
+        </div>
+
+        <!-- BREADCRUMBS-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb col-12 mx-2 p-2 bg-secondary-subtle bg-light bg-opacity-75 rounded-pill">
+                <li class="breadcrumb-item active" aria-current="page">Index</li>
+            </ol>
+        </nav>
+       
+
+    </div>
+
+    <div class="col-lg-12 col-md-6 col-sm-6">
+        <div class="card mb-4">
+
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Categories
+                <a href="@Url.Action("Create", "Categories")" class="btn btn-sm btn-outline-info float-end">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+            </div>
+
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryDescription)
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CategoryDescription)
+                                </th>
+                                <th>Action</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CategoryName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CategoryDescription)
+                                    </td>
+
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

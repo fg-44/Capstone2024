@@ -1,0 +1,68 @@
+﻿@model PathNatureEcommerceCapstone.Models.ViewModel.CartViewModel
+
+@{
+    ViewBag.Title = "CheckoutDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+// If the model is null or the cart is empty, display an error message
+
+if (Model == null || (Model.CartItems == null || !Model.CartItems.Any()))
+{
+    <div class="alert alert-danger">
+        <strong>No products added to the cart!</strong>
+    </div>
+}
+
+// Otherwise, display the cart
+
+  else if (Model != null)
+{
+    <div class="row d-flex">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-shopping-cart me-1"></i>
+                    Cart
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered" id="cartTable">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <tr>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.TotalPrice</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-money-bill-wave me-1"></i>
+                    Total
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">Total: @Model.TotalPrice</h5>
+                    <a asp-action="Checkout" class="btn btn-primary btn-block">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

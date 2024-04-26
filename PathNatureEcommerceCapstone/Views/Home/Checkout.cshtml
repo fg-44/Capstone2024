@@ -1,0 +1,102 @@
+﻿@model PathNatureEcommerceCapstone.Models.ViewModel.CartViewModel
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model != null && (Model.CartItems == null || !Model.CartItems.Any()))
+{
+    <div class="alert alert-danger">
+        <strong>Nessun prodotto aggiunto al carrello!</strong>
+    </div>
+}
+else if (Model != null)
+{
+
+    <div class="row d-flex">
+        <!-- Div col per il layout -->
+        <div class="col-lg-8">
+            <!-- Div card per il layout -->
+            <div class="card mb-4">
+                <!-- Div card-header per il layout -->
+                <div class="card-header">
+                    <i class="fas fa-shopping-cart me-1"></i>
+                    Carrello
+                </div>
+                <!-- Div card-body per il layout -->
+                <div class="card-body">
+                    <!-- Tabella del carrello -->
+                    <table class="table table-bordered" id="cartTable">
+                        <!-- Intestazione della tabella -->
+                        <thead>
+                            <tr>
+                                <th>Prodotto</th>
+                                <th>Quantità</th>
+                                <th>Prezzo</th>
+                                <th>Totale</th>
+                            </tr>
+                        </thead>
+                        <!-- Corpo della tabella -->
+                        <tbody>
+                            <!-- Ciclo per ogni elemento del carrello -->
+                            @foreach (var item in Model.CartItems)
+                            {
+                                <tr>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.TotalPrice</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-truck me-1"></i>
+                    Dettagli di spedizione
+                </div>
+                <div class="card-body">
+                    <!-- Form per i dettagli di spedizione -->
+                    @using (Html.BeginForm("CheckoutID", "Home", FormMethod.Post, new { id = "checkoutForm", data_checkout_url = Url.Action("CheckoutID", "Home") }))
+
+                    {
+                        <div class="mb-3">
+                            <label for="ShippingDetails_Address" class="form-label">Indirizzo</label>
+                            @Html.TextBoxFor(model => model.ShippingDetails.Address, new { @class = "form-control", id = "ShippingDetails_Address" })
+                            @Html.ValidationMessageFor(model => model.ShippingDetails.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            <label for="ShippingDetails_City" class="form-label">Città</label>
+                            @Html.TextBoxFor(model => model.ShippingDetails.City, new { @class = "form-control", id = "ShippingDetails_City" })
+                            @Html.ValidationMessageFor(model => model.ShippingDetails.City, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            <label for="ShippingDetails_State" class="form-label">Stato</label>
+                            @Html.TextBoxFor(model => model.ShippingDetails.State, new { @class = "form-control", id = "ShippingDetails_State" })
+                            @Html.ValidationMessageFor(model => model.ShippingDetails.State, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-3">
+                            <label for="ShippingDetails_ZipCode" class="form-label">CAP</label>
+                            @Html.TextBoxFor(model => model.ShippingDetails.ZipCode, new { @class = "form-control", id = "ShippingDetails_ZipCode" })
+                            @Html.ValidationMessageFor(model => model.ShippingDetails.ZipCode, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ShippingDetails_TotalAmount" class="form-label">Importo totale</label>
+                            @Html.TextBoxFor(model => model.TotalAmount, new { @class = "form-control", @readonly = "readonly", id = "ShippingDetails_TotalAmount" })
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Conferma Ordine</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

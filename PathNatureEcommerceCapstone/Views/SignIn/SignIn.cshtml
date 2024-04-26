@@ -1,0 +1,72 @@
+﻿@model PathNatureEcommerceCapstone.Models.DatabaseCapstone.Members
+
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("SignIn", "SignIn", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="row d-flex flex-column">
+            <div class="col-md-4 mx-auto text-center">
+                <div class="header-title ">
+                    <h1 class="display-5">
+                        Check out — it’s free!
+                    </h1>
+                    <p class=" text-muted">
+                        Benvenut* su PathNature, la tua destinazione online per tutte le tue necessità di trekking!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mx-auto d-flex flex-column align-content-center justify-content-center">
+
+                <form>
+
+                    <!-- USERNAME -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <div class="form-group  mt-2">
+                        <div class="col-md-offset-2 col-md-12">
+                            <input type="submit" value="Create" class="btn btn-outline-success" />
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+
+                        <p> Non Sei registrato? <span> @Html.ActionLink("SignIn", "SignIn") </span></p>
+
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathNatureEcommerceCapstone", "PathNatureEcommerceCapstone\PathNatureEcommerceCapstone.csproj", "{C90F5173-15F2-45EA-8B35-FEAD7987AA8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C90F5173-15F2-45EA-8B35-FEAD7987AA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C90F5173-15F2-45EA-8B35-FEAD7987AA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C90F5173-15F2-45EA-8B35-FEAD7987AA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C90F5173-15F2-45EA-8B35-FEAD7987AA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A116ACED-2810-4E88-A9D5-FE6966557ABE}
+	EndGlobalSection
+EndGlobal
